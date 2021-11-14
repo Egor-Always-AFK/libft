@@ -17,7 +17,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*trash_dst;
 	char	*trash_src;
 
-	if ((dst == (void *)0) && (src == (void *)0))
+	if ((dst == NULL) && (src == NULL))
 		return (0);
 	trash_dst = (char *)dst;
 	trash_src = (char *)src;

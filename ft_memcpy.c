@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*trash;
 	const char	*trash2;
 
-	if (dst == (void *)0 && src == (void *)0)
+	if (dst == NULL && src == NULL)
 		return (0);
 	trash = (char *)dst;
 	trash2 = (const char *)src;

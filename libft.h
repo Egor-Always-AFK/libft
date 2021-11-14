@@ -85,4 +85,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 char	*ft_itoa(int n);
 
+char	**ft_split(char const *s, char c);
+
 #endif

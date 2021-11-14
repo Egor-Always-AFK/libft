@@ -12,12 +12,14 @@
 
 #include "libft.h"
 
-static int check_len_int(int n)
+static int	check_len_int(int n)
 {
-	int i; 
+	int	i;
 
 	i = 0;
-	while (n)
+	if (n == 0)
+		return (1);
+	while (n != 0)
 	{
 		i++;
 		n /= 10;
@@ -27,28 +29,28 @@ static int check_len_int(int n)
 
 char	*ft_itoa(int n)
 {
-	int	idk;
-	char	*trash_res;
-	int		sign_trash;
- 
-	sign_trash = 1;
-	idk = check_len_int(n);
-	trash_res = malloc(sizeof(char) * (idk + 1 + (n < 0)));
-	if (trash_res == NULL)
+	int		i;
+	char	*res;
+	int		sign;
+
+	i = check_len_int(n);
+	sign = 1;
+	res = malloc(sizeof(char) * i + 1 + (n < 0));
+	if (res == NULL)
 		return (NULL);
-	trash_res[idk + 1] = '\0';
+	ft_bzero(res, i + 2);
 	if (n < 0)
 	{
-		trash_res[0] = '-';
-		sign_trash *= -1;
-		idk += 1;
+		res[0] = '-';
+		sign *= -1;
+		i += 1;
 	}
 	if (n == 0)
-		trash_res[0] = '0';
+		res[0] = '0';
 	while (n)
 	{
-		trash_res[--idk] = ((n % 10) * sign_trash) + '0';	
+		res[--i] = (n % 10) * sign + '0';
 		n /= 10;
 	}
-	return (trash_res);
+	return (res);
 }

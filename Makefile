@@ -2,7 +2,9 @@ NAME = libft.a
 
 CC = clang
 
-CFLAGS =  -g -c -Wall -Werror -Wextra
+CFLAGS =  -c -Wall -Werror -Wextra
+
+HEADER = libft.h
 
 SRCS =  ft_bzero.c ft_strlcat.c \
 		ft_isalnum.c ft_isalpha.c \
@@ -20,6 +22,7 @@ SRCS =  ft_bzero.c ft_strlcat.c \
 		ft_strnstr.c ft_putnbr_fd.c \
 		ft_strmapi.c ft_strjoin.c \
 		ft_substr.c ft_itoa.c \
+        ft_striteri.c ft_split.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -27,9 +30,8 @@ all: $(SRCS) $(NAME)
 
 $(NAME) : $(OBJS)
 	ar rcs $(NAME) $(OBJS) 
-	ranlib $(NAME) $(HEADER)
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
